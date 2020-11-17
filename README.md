@@ -161,7 +161,7 @@ the specificity (Pandey, 2018). In essence, a ROC curve provides how the sensiti
 be visually identified. The R code for building a ROC curve can be found in Figure 9 with the
 ROC curve itself, displayed in Figure 10.
 
-
+<img width="685" alt="Screen Shot 2020-11-16 at 11 34 33 PM" src="https://user-images.githubusercontent.com/66921930/99347443-27d4d680-2865-11eb-858f-1c533f7dad75.png">
 
 
 Based on the ROC curve the optimal threshold value looks to be around 0.4 for
@@ -173,7 +173,7 @@ the logistic regression model is 82.08%. Specifically, this means that the model
 identify eligible loan applicants based on testing data 82.08% of the time. Overall it is a
 relatively efficient model for loan officers to utilize to target eligible applicants.
 
-
+<img width="637" alt="Screen Shot 2020-11-16 at 11 38 43 PM" src="https://user-images.githubusercontent.com/66921930/99347444-29060380-2865-11eb-8b90-cd71f0819d75.png">
 
 # Decision Tree Application
 Another popular technique for classification problems, are decision trees. Decision trees
@@ -186,7 +186,7 @@ In fact, further cleanup is done only to make the decision tree easier to read. 
 Loan Status from “0” and “1” to “Denied” and “Approved” the output of the decision tree will be much clearer. Figure 12 showcases the R code used to convert both the testing and training
 datasets nomenclature for Loan Status.
 
-
+<img width="649" alt="Screen Shot 2020-11-16 at 11 39 49 PM" src="https://user-images.githubusercontent.com/66921930/99347446-29060380-2865-11eb-96f5-b2978ffbff17.png">
 
 As the intent behind the model has not changed between logistic regression and the
 decision tree, Loan Status remains the dependent variable. Similar to logistic regression, the
@@ -196,6 +196,60 @@ variable and the remaining 11 variables are included so that the model can deter
 significant predictors from the entire dataset. Since the decision tree model will be utilized to
 understand whether a loan application is approved or denied, the algorithm uses a method of
 “class” to specifically build a classification tree. R code is found in Figure 13.
+
+<img width="653" alt="Screen Shot 2020-11-16 at 11 40 17 PM" src="https://user-images.githubusercontent.com/66921930/99347447-299e9a00-2865-11eb-958d-df29f8b31e37.png">
+
+
+The code in Figure 13 outputs the decision tree provided in Figure 14. The root node and
+each subsequent node provides the probability of a loan being approved or denied as well as the
+percentage of online applications utilized in each node. From the root node in Figure 14, it is
+discerned that the loan approval rate of all applications is 69%. From the root node, decision
+branches start breaking down the important predictor variables.
+
+
+
+As found in the logistic regression model, Credit History is seen as the most significant
+variable in predicting loan eligibility. From the decision tree the first decision branch asks if the
+loan applicant does not have a credit history. The left side of the decision tree is very concise, if
+a loan applicant does not have a credit history there is only a 10% probability their loan will be
+approved. The right side of the decision tree takes into account many more factors, however it
+largely shows that applicants with a credit history have an 80% probability of being approved.
+
+
+
+Taking a step back from the decision tree, logically this makes sense as an established credit
+history is an indicator highly correlated to understanding a person’s ability to pay an institution.
+The decision tree takes into account more predictors if a loan applicant has a credit
+history. These predictors include Property Area, the Applicant’s Income, the Loan Amount and
+the Co-applicant’s Income. Expanding on Figure 14 results, if the decision tree is broken down
+further it can be seen that an applicant with a credit history, who lives in either a rural or urban
+area and has an Applicant Income greater than 1613 but less than 3362, has an 83% probability
+of their loan being approved. Being able to quickly make these correlations, is what makes
+decision trees such a popular choice when working with classification problems.
+With the model built, it can now be used to predict the testing dataset. This is an
+important step to understand how the predicted outputs compare to the actuals and therefore how
+applicable the model is to the identified goal. The R code provided in Figure 15, runs the model
+on the testing dataset and provides how well the model performed. When tested the model
+accurately predicted 86 of the loan applications and misclassified 20. Turning these numbers into
+an accuracy score, the model was found to be 81.13% accurate on the testing dataset, as seen in
+Figure 15.
+
+
+
+
+Although the testing dataset has been applied to the model, to understand accuracy
+further, steps can be taken to improve the score by tuning the model. Tuning parameters in a
+decision tree is formally known as pruning. Pruning is used to reduce the likelihood of
+overfitting by removing components that do not provide enough classification power (Hoare,
+n.d.). There are several parameters available to be tuned, the maximum depth of any node, the
+minimum number of observations in a node prior to splitting, the minimum number of
+observations in the final leaf and the minimum increase of fit (Guru99, 2020).
+By tuning the parameters, or pruning, the goal is to increase the accuracy of the model
+while also decreasing the overall decision tree size if appropriate. The R code provided in Figure
+16 builds the formulas for applying tuning and parameter fitting and demonstrates the parameters
+that were found to increase the accuracy while reducing the overall tree size. From this, the
+model is updated to build a pruned decision tree and provide the new accuracy score as shown in
+Figure 17.
 
 
 
