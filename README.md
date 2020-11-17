@@ -114,7 +114,7 @@ possible outcomes, is an easy validation step to take. From the R code in Figure
 shows that it computed appropriately and that the variance between outcomes is mostly
 equivalent between the two datasets.
 
-
+<img width="656" alt="Screen Shot 2020-11-16 at 11 31 01 PM" src="https://user-images.githubusercontent.com/66921930/99347050-14753b80-2864-11eb-9c0a-577f58d30b5e.png">
 
 
 # Logistic Regression Application
@@ -126,7 +126,7 @@ The application of binomial to the family function provides instruction to build
 regression model (Pandey, 2018). R code and results can be found in Figure 6.
 
 
-
+<img width="681" alt="Screen Shot 2020-11-16 at 11 31 33 PM" src="https://user-images.githubusercontent.com/66921930/99347051-14753b80-2864-11eb-8238-02461a8f2b2c.png">
 
 From the R output, quite a few coefficients are built, however only a couple have
 significance to the model. Both Credit History and Semi Urban Property Areas represent
@@ -140,7 +140,7 @@ for each true outcome (Pandey, 2018). From the R code and output in Figure 7 the
 average probability of true loan rejections is 44% while the prediction for average probability of
 true loan approvals is 80%.
 
-
+<img width="615" alt="Screen Shot 2020-11-16 at 11 32 12 PM" src="https://user-images.githubusercontent.com/66921930/99347052-14753b80-2864-11eb-81d3-0a8c4017ad7f.png">
 
 
 A threshold value is intended to increase model prediction accuracy by reducing false
@@ -150,7 +150,52 @@ common threshold of 0.5 applied, the R output for the confusion matrix in Figure
 that the model predicted 70 type I errors and 10 type II errors with an overall accuracy of 81%.
 
 
+<img width="676" alt="Screen Shot 2020-11-16 at 11 32 35 PM" src="https://user-images.githubusercontent.com/66921930/99347055-150dd200-2864-11eb-9006-eced12ba6feb.png">
 
+
+In an effort to determine the optimum threshold value beyond running confusion
+matrices, the process can be further explored by establishing a Receiver Operator Characteristic
+curve. Also referred to as a ROC curve, the application uses R’s performance function to define
+a plot for the true positive rate, or sensitivity of the model, to the false positive rate, or 1 minus
+the specificity (Pandey, 2018). In essence, a ROC curve provides how the sensitivity and specificity outcomes vary from one threshold value to another, allowing an optimal threshold to
+be visually identified. The R code for building a ROC curve can be found in Figure 9 with the
+ROC curve itself, displayed in Figure 10.
+
+
+
+
+Based on the ROC curve the optimal threshold value looks to be around 0.4 for
+maximizing the true positive rate while minimizing the false positive rate. This value can be
+applied to a confusion matrix for the testing dataset to understand how the logistic regression
+model works to predict customers for loan eligibility. Running the model in Figure 11, there are
+0 type II errors, or false negatives, and 19 type I errors, or false positives. Overall the accuracy of
+the logistic regression model is 82.08%. Specifically, this means that the model can accurately
+identify eligible loan applicants based on testing data 82.08% of the time. Overall it is a
+relatively efficient model for loan officers to utilize to target eligible applicants.
+
+
+
+# Decision Tree Application
+Another popular technique for classification problems, are decision trees. Decision trees
+are popular for their ability to provide highly interpretable results. By applying a decision tree
+algorithm to Dream Housing Finance’s data it will be very clear what the best predictors for
+eligible customer segments are. Due to the advance work that went into preparing the dataset for
+use in logistic regression and the cross over between data set up between the two methods,
+minimal work has to be applied to prepare the existing datasets for use in a decision tree model.
+In fact, further cleanup is done only to make the decision tree easier to read. By relabeling the
+Loan Status from “0” and “1” to “Denied” and “Approved” the output of the decision tree will be much clearer. Figure 12 showcases the R code used to convert both the testing and training
+datasets nomenclature for Loan Status.
+
+
+
+As the intent behind the model has not changed between logistic regression and the
+decision tree, Loan Status remains the dependent variable. Similar to logistic regression, the
+decision tree model is built on the training dataset and will be applied later to the testing dataset
+to understand predictive accuracy. Using the function rpart, Loan Status is set as the dependent
+variable and the remaining 11 variables are included so that the model can determine the
+significant predictors from the entire dataset. Since the decision tree model will be utilized to
+understand whether a loan application is approved or denied, the algorithm uses a method of
+“class” to specifically build a classification tree. R code is found in Figure 13.
 
 
 
