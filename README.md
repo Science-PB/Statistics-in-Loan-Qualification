@@ -206,17 +206,14 @@ percentage of online applications utilized in each node. From the root node in F
 discerned that the loan approval rate of all applications is 69%. From the root node, decision
 branches start breaking down the important predictor variables.
 
-
+<img width="682" alt="Screen Shot 2020-11-16 at 11 42 07 PM" src="https://user-images.githubusercontent.com/66921930/99347683-a762a580-2865-11eb-9b90-3ab06059faeb.png">
 
 As found in the logistic regression model, Credit History is seen as the most significant
 variable in predicting loan eligibility. From the decision tree the first decision branch asks if the
 loan applicant does not have a credit history. The left side of the decision tree is very concise, if
 a loan applicant does not have a credit history there is only a 10% probability their loan will be
 approved. The right side of the decision tree takes into account many more factors, however it
-largely shows that applicants with a credit history have an 80% probability of being approved.
-
-
-
+largely shows that applicants with a credit history have an 80% probability of being approved. 
 Taking a step back from the decision tree, logically this makes sense as an established credit
 history is an indicator highly correlated to understanding a person’s ability to pay an institution.
 The decision tree takes into account more predictors if a loan applicant has a credit
@@ -234,7 +231,7 @@ accurately predicted 86 of the loan applications and misclassified 20. Turning t
 an accuracy score, the model was found to be 81.13% accurate on the testing dataset, as seen in
 Figure 15.
 
-
+<img width="686" alt="Screen Shot 2020-11-16 at 11 42 40 PM" src="https://user-images.githubusercontent.com/66921930/99347685-a7fb3c00-2865-11eb-834b-138f9130b1d6.png">
 
 
 Although the testing dataset has been applied to the model, to understand accuracy
@@ -251,5 +248,76 @@ that were found to increase the accuracy while reducing the overall tree size. F
 model is updated to build a pruned decision tree and provide the new accuracy score as shown in
 Figure 17.
 
+<img width="663" alt="Screen Shot 2020-11-16 at 11 43 31 PM" src="https://user-images.githubusercontent.com/66921930/99347686-a7fb3c00-2865-11eb-9d89-deadf9b70dc4.png">
 
+<img width="674" alt="Screen Shot 2020-11-16 at 11 43 37 PM" src="https://user-images.githubusercontent.com/66921930/99347687-a893d280-2865-11eb-9f1b-44beae7ac939.png">
 
+The result from the pruned decision tree is quite different, eliminating all but Credit
+History as a predictor variable for loan eligibility. While marginal this smaller tree does increase
+the accuracy of the model to 82.08%, the same score achieved from the logistic regression
+model. Unlike the harder to decipher logistic regression model, the use of a decision tree
+provides very clear direction to loan officers about the customer segments they should be
+targeting. With the same score as logistic regression, the decision tree model is found to be as
+viable, making it as much of an algorithm candidate for automating the home loan qualification
+process as logistic regression is.
+
+# Conclusion
+Logistic regression and decision trees are both techniques utilized to help make
+educational decisions on classification problems. In this case they were applied to understand
+what customer segments lenders at Dream Housing Finance should target. This type of problem
+exists throughout businesses across the world, how to efficiently and effectively allocate
+resources. Addressing online applications one-by-one would be a time-consuming endeavor, and
+in a world where time is money, its not a realistic solution. This is where statistics and more
+specifically machine learning enter into the equation.
+By applying different machine learning techniques, an automated process can now be
+applied to online home loan applications with an 82% accuracy rating. While not a fool proof
+solution, either logistic regression or a decision tree model provides sufficient algorithms to aide
+loan officers in targeting the correct customers based on the identified significant predictor
+variables which in both models highly reference Credit History.
+A main difference between the models that needs to be understood is whether it is more
+accurate for the effects of the predictors to be reviewed simultaneously or sequentially. Decision
+trees look at sequential effects where logistic regression looks at the simultaneous effects of the
+predictors (Bock, n.d.). Taking a step back and thinking about the loan approval process
+logically, it is more akin to a check mark approach, i.e. an applicant being approved if they have
+certain attributes, which would make decision trees a stronger selection choice in this particular
+use case due to its sequential predictor interpretation. Since the goal is to identify customer
+segments, decision trees perform this in an easier to understand way that leaves less room for
+misinterpretation.To finalize, customer segments that display a credit history should be the target focus for
+Dream Housing Finance. Both the tuned logistic regression and decision tree models output the
+same accuracy rate, although decision tress are viewed as the safer selection due to their
+comprehensibility and sequential effects on the predictors. The result to dedicate resources to
+applicants with a credit history expands beyond statistics however, as it is a common lender
+practice to require a credit history from applicants, whether the loan is a home loan or other
+form. While the ethics factor could be in question, Dream Housing Finance could automate their
+process to advance customers with a credit history to the top of the pile in order to more
+effectively manage their resource pool.
+
+# References
+
+Pandey, P. (2018, Aug 18). A Guide to Machine Learning in R for Beginners: Logistic
+
+Regression. Medium. Retrieved from: https://medium.com/analytics-vidhya/a-guide-to-machine-
+learning-in-r-for-beginners-part-5-4c00f2366b90
+
+Brid, R. (2018, Oct 17). Brief on Regression Analysis. Medium. Retrieved from:
+
+https://medium.com/greyatom/logistic-regression-
+89e496433063#:~:text=Their%20value%20strictly%20ranges%20from,%E2%80%9CYes%20or
+
+%20No%E2%80%9D%20etc.
+Guru99. (2020). Decision Tree in R with Example. Guru99. Retrieved from:
+https://www.guru99.com/r-decision-trees.html#1
+
+Hoare, J. (n.d.). Machine Learning: Pruning Decision Trees. DISPLAYR Blog. Retrieved from:
+https://www.displayr.com/machine-learning-pruning-decision-trees/
+
+Bock, T. (n.d.). Decision Tress Are Usually Better Than Logistic Regression. DISPLAYR Blog.
+
+Retrieved from: https://www.displayr.com/decision-trees-are-usually-better-than-logistic-
+regression/#:~:text=By%20contrast%2C%20logistic%20regression%20looks,decision%20trees
+
+%20are%20much%20better.
+Analytics Vidhya (n.d.). Loan Prediction Practice Problem (Using Python. Analytics Vidhya.
+
+Retrieved from: https://courses.analyticsvidhya.com/courses/take/loan-prediction-practice-
+problem-using-python/texts/6119689-model-building-part-i
