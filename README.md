@@ -71,8 +71,7 @@ regression and a decision tree, the intent will be to improve the accuracy beyon
 model.
 
 
-
-
+<img width="659" alt="Screen Shot 2020-11-16 at 11 27 32 PM" src="https://user-images.githubusercontent.com/66921930/99346834-9022b880-2863-11eb-9b6e-860541943ed5.png">
 
 # Setting Up the Data
 When applying machine learning models to a dataset a critical starting factor is ensuring
@@ -83,7 +82,7 @@ dataset is shuffled in order to ensure randomization and reduce the risk of any 
 have been in place generating bias when splitting the data. R code is provided in Figure 2 for the
 shuffling process.
 
-
+<img width="663" alt="Screen Shot 2020-11-16 at 11 28 11 PM" src="https://user-images.githubusercontent.com/66921930/99346836-90bb4f00-2863-11eb-981a-4ee4468f3899.png">
 
 With the data sufficiently shuffled, the next step involves dataset cleaning and set up to
 accommodate logistic regression. This stage can be as simple as removing unnecessary variables
@@ -96,10 +95,62 @@ outcome, the Loan Status dependent variable is changed from “Y”, “N” to 
 represents the desired outcome (Brid, 2018). The R code and sample of cleaned data is
 represented in Figure 3.
 
-
+<img width="658" alt="Screen Shot 2020-11-16 at 11 28 48 PM" src="https://user-images.githubusercontent.com/66921930/99346837-9153e580-2863-11eb-9e9e-9d5b8361652d.png">
 
 At this stage the data is ready to be split into a training and testing dataset. This is done to
 generate less bias when evaluating prediction accuracy. The training dataset is used to build the
 model and the training set is used to evaluate the accuracy of the model itself. Using the R code
 in Figure 4, the decision is made to use a popular split of 80% of the data falling into the training
 category and 20% falling into the testing category.
+
+<img width="639" alt="Screen Shot 2020-11-16 at 11 29 04 PM" src="https://user-images.githubusercontent.com/66921930/99346838-91ec7c00-2863-11eb-9954-446c632f3b01.png">
+
+
+When building machine learning models, while not required, validating the appropriate
+actions took place is a rational step to ensure accurate results are achieved further along the
+process. In this case where the data is split, ensuring the split occurred at the appropriate
+percentages and that the training and testing datasets are split roughly equally between the two
+possible outcomes, is an easy validation step to take. From the R code in Figure 5, the split
+shows that it computed appropriately and that the variance between outcomes is mostly
+equivalent between the two datasets.
+
+
+
+
+# Logistic Regression Application
+With the data sufficiently set up and split, logistic regression is ready to be applied to
+build the first model for understanding eligible customer segments for home loans. Using R, a
+generalized linear model is constructed around the training dataset, applying Loan Status as the
+dependent variable and the now remaining 11 variables as independent or potential predictors.
+The application of binomial to the family function provides instruction to build a logistic
+regression model (Pandey, 2018). R code and results can be found in Figure 6.
+
+
+
+
+From the R output, quite a few coefficients are built, however only a couple have
+significance to the model. Both Credit History and Semi Urban Property Areas represent
+themselves as having an impact on predicting loan eligibility, although based on the probability
+value of each, Credit History is the main contributor. An Education Level of Not Graduate is
+nearly a significant variable but does, just barely, exceed the threshold of 0.05.
+With the model built and an understanding of the model predictors, predictions can be
+applied to the training dataset. It is important to make predictions on the training set in order to
+begin to identify the optimum threshold value to apply to the testing model to increase prediction accuracy. Application of the tapply function to the training dataset outputs the average prediction
+for each true outcome (Pandey, 2018). From the R code and output in Figure 7 the prediction for
+average probability of true loan rejections is 44% while the prediction for average probability of
+true loan approvals is 80%.
+
+
+
+
+A threshold value is intended to increase model prediction accuracy by reducing false
+positives and false negatives. Confusion matrices help evaluate a model’s sensitivity and
+specificity and is one way of understanding the accuracy a threshold has on a training dataset. A
+common threshold of 0.5 applied, the R output for the confusion matrix in Figure 8 showcases
+that the model predicted 70 type I errors and 10 type II errors with an overall accuracy of 81%.
+
+
+
+
+
+
